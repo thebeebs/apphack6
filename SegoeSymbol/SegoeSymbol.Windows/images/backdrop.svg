@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="297mm"
+   height="210mm"
+   id="svg3884">
+  <defs
+     id="defs3886" />
+  <metadata
+     id="metadata3890">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1">
+    <rect
+       width="150"
+       height="848.52557"
+       x="757.34204"
+       y="106.05911"
+       transform="matrix(1,0,-0.70710464,0.70710892,0,0)"
+       id="rect4006"
+       style="opacity:0.18000004;fill:#666666;fill-opacity:1;stroke:none" />
+    <path
+       d="m 386.59375,70.96875 -302.75,302.75 0,150 452.75,-452.75 -150,0 z"
+       id="rect3893-5-6"
+       style="opacity:0.18000004;fill:#666666;fill-opacity:1;stroke:none" />
+    <path
+       d="m 978.96875,225.90625 -445.0625,445.0625 150,0 297.3125,-297.3125 0,-145.5 -2.25,-2.25 z"
+       id="rect3893-5-7-9"
+       style="opacity:0.18000004;fill:#e1e1e1;fill-opacity:1;stroke:none" />
+    <path
+       d="m 653.65138,402.09448 221.52443,-221.47547 -2.0067,-2.00677 -438.98651,0 -2.00679,2.00677 221.47557,221.47547 z"
+       id="rect3983"
+       style="opacity:0.18000004;fill:#e1e1e1;fill-opacity:1;stroke:none" />
+    <path
+       d="m 504.78125,404.4375 -2.03125,2.03125 73.1875,73.15625 75.1875,-75.1875 -146.34375,0 z m 296.34375,0 -150.1875,150.1875 73.78125,73.8125 222.03125,-221.96875 -2,-2.03125 -143.625,0 z"
+       id="rect3983-8"
+       style="opacity:0.18000004;fill:#000000;fill-opacity:1;stroke:none" />
+    <rect
+       width="150"
+       height="848.52557"
+       x="757.34204"
+       y="106.05911"
+       transform="matrix(1,0,-0.70710464,0.70710892,0,0)"
+       id="rect3893"
+       style="opacity:0.18000004;fill:#666666;fill-opacity:1;stroke:none" />
+  </g>
+</svg>

@@ -1,0 +1,126 @@
+﻿.title {
+	font-family: 'Bebas Neue';
+	color: black;
+}
+
+.background {
+	background-color: #F8C300;
+   -ms-grid-columns: 1fr;
+    -ms-grid-rows: 128px 1fr;
+    display: -ms-grid;
+    height: 100%;
+    width: 100%;
+    background-image:url('../images/backdrop.svg')
+}
+
+.win-itembox {
+    background-color:transparent !important;
+}
+
+.win-surface {
+        margin-left: 120px;
+        margin-right: 120px;
+        margin-bottom:120px;
+    }
+
+.symbolGrid {
+	height: calc(100%);
+    width:100%
+}
+
+.haciendaGrid {
+    font-family:'Segoe UI Symbol';
+	width: 150px;
+	height: 150px;
+	background-color: transparent;
+}
+
+.tri {
+    z-index:-1;
+    transition:all 1s;
+    position:absolute;
+    width:400px;
+    height:400px;
+    left:-200px;
+    top:-200px;
+	background-color:rgb(0,0,0);
+    transform:rotate(-45deg);
+}
+
+.win-selected .tri {
+     z-index:-1;
+    transition:all 1s;
+    position:absolute;
+    width:140px;
+    height:140px;
+    left:-70px;
+    top:-70px;
+	background-color:rgb(0,0,0);
+    transform:rotate(-45deg);
+}
+
+:not(.win-selectionstylefilled).win-listview .win-selected.win-container .win-selectionborder, :not(.win-selectionstylefilled).win-selected.win-container.win-itemcontainer .win-selectionborder {
+    border-color: #F8C300;
+}
+:not(.win-selectionstylefilled).win-listview .win-selected.win-container:hover .win-selectionborder, :not(.win-selectionstylefilled).win-selected.win-container.win-itemcontainer:hover .win-selectionborder {
+    border-color: #F8C300;
+}
+
+.win-listview .win-container:hover, .win-container.win-itemcontainer:hover {
+    outline: rgba(0, 0, 0, 1) solid 2px;
+}
+
+.itemSymbol {
+    font-family:'Segoe UI Symbol';
+	transition:all 1s;
+	font-size: 70px;
+    padding-top:20px;
+    padding-left:20px;
+    width:150px;
+    height:150px;
+}
+
+.win-selected .itemSymbol {
+    font-family:'Segoe UI Symbol';
+	transition:all 1s;
+	font-size: 20px;
+   
+}
+.itemInfo {
+    font-family:Consolas;
+    background-color:#000;
+	color:#fff;
+     padding: 2px 10px 2px 10px;
+     margin-bottom:2px;
+     text-align:right;
+     font-size:20px;
+}
+.infoHolder {
+    position:absolute;
+    right:0px;
+    bottom:0px;
+    z-index:-2;
+    padding:10px;
+}
+
+
+
+
+.haciendaBackground {
+	background-size: 50px 50px;
+	background-color:#F8C300;
+	background-image: linear-gradient(-45deg, rgba(0, 0, 0, 1) 25%, transparent 25%,
+                        transparent 50%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 75%,
+                        transparent 75%, transparent);
+
+}
+
+button, input[type=button], input[type=submit],
+input[type=reset], input[type=file]::-ms-browse {
+    background-color: rgb(0,0,0)!important;
+    border-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+	margin:10px !important;
+}
+
+
