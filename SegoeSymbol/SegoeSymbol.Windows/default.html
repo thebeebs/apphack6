@@ -18,16 +18,13 @@
 <body class="background">
     <div id="haciendaGrid" data-win-control="WinJS.Binding.Template">
         <div class="haciendaGrid">
-            <div class="infoHolder">
-                <div class="infoHolderItem">
-                    <label>HEX</label><div class="infoHolderItemText" data-win-bind="textContent:code"></div>
-                </div>
-                <div class="infoHolderItem">
-                    <label>HTML</label><div class="infoHolderItemText" data-win-bind="textContent:html"></div>
-                </div>
-                <div class="infoHolderItem">
-                    <div class="infoHolderItemText" data-win-bind="textContent:css"></div><label>CSS</label>
-                </div>
+            <div class="flex-container">
+                <label class="flex-item">HEX</label>
+                <span class="flex-item" data-win-bind="textContent:code"></span>
+                <br><label class="flex-item">HTML</label>
+                <span class="flex-item" data-win-bind="textContent:html"></span>
+                <label class="flex-item">CSS</label>
+                <span class="flex-item" data-win-bind="textContent:css"></span>
             </div>
 
             <div class="itemSymbol" data-win-bind="innerHTML:symbol"></div>
