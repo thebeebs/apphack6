@@ -50,11 +50,15 @@
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>SegoeSymbol_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <NuGetPackageImportStamp>d07ff7a1</NuGetPackageImportStamp>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="default.html" />
     <Content Include="images\backdrop.svg" />
     <Content Include="images\logo.png" />
@@ -62,6 +66,7 @@
     <Content Include="images\splashscreen.png" />
     <Content Include="images\storelogo.png" />
     <Content Include="css\default.css" />
+    <Content Include="packages.config" />
     <None Include="SegoeSymbol_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +74,13 @@
   </ItemGroup>
   <Import Project="..\SegoeSymbol.Shared\SegoeSymbol.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
+  <Import Project="..\..\packages\Microsoft.ApplicationInsights.Telemetry.WindowsStore.0.7.2.0\build\win81\Microsoft.ApplicationInsights.Telemetry.WindowsStore.targets" Condition="Exists('..\..\packages\Microsoft.ApplicationInsights.Telemetry.WindowsStore.0.7.2.0\build\win81\Microsoft.ApplicationInsights.Telemetry.WindowsStore.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.ApplicationInsights.Telemetry.WindowsStore.0.7.2.0\build\win81\Microsoft.ApplicationInsights.Telemetry.WindowsStore.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.ApplicationInsights.Telemetry.WindowsStore.0.7.2.0\build\win81\Microsoft.ApplicationInsights.Telemetry.WindowsStore.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below then uncomment
        that target and the DisableFastUpToDateCheck PropertyGroup. 
        Other similar extension points exist, see Microsoft.Common.targets.

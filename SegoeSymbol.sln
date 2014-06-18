@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30324.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedApp", "SharedApp", "{CA14A203-EF6C-4F2B-90E2-7B644EF483E1}"
 EndProject
@@ -28,9 +28,9 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{78D05560-D94D-4ACD-A38E-225DFB315BAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78D05560-D94D-4ACD-A38E-225DFB315BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78D05560-D94D-4ACD-A38E-225DFB315BAD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{78D05560-D94D-4ACD-A38E-225DFB315BAD}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{78D05560-D94D-4ACD-A38E-225DFB315BAD}.Debug|Any CPU.Build.0 = Debug|x64
+		{78D05560-D94D-4ACD-A38E-225DFB315BAD}.Debug|Any CPU.Deploy.0 = Debug|x64
 		{78D05560-D94D-4ACD-A38E-225DFB315BAD}.Debug|ARM.ActiveCfg = Debug|ARM
 		{78D05560-D94D-4ACD-A38E-225DFB315BAD}.Debug|ARM.Build.0 = Debug|ARM
 		{78D05560-D94D-4ACD-A38E-225DFB315BAD}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -52,9 +52,9 @@ Global
 		{78D05560-D94D-4ACD-A38E-225DFB315BAD}.Release|x86.ActiveCfg = Release|x86
 		{78D05560-D94D-4ACD-A38E-225DFB315BAD}.Release|x86.Build.0 = Release|x86
 		{78D05560-D94D-4ACD-A38E-225DFB315BAD}.Release|x86.Deploy.0 = Release|x86
-		{24047A3D-8018-4E42-AEF1-45BBBFEDFC96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24047A3D-8018-4E42-AEF1-45BBBFEDFC96}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24047A3D-8018-4E42-AEF1-45BBBFEDFC96}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{24047A3D-8018-4E42-AEF1-45BBBFEDFC96}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{24047A3D-8018-4E42-AEF1-45BBBFEDFC96}.Debug|Any CPU.Build.0 = Debug|x86
+		{24047A3D-8018-4E42-AEF1-45BBBFEDFC96}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{24047A3D-8018-4E42-AEF1-45BBBFEDFC96}.Debug|ARM.ActiveCfg = Debug|ARM
 		{24047A3D-8018-4E42-AEF1-45BBBFEDFC96}.Debug|ARM.Build.0 = Debug|ARM
 		{24047A3D-8018-4E42-AEF1-45BBBFEDFC96}.Debug|ARM.Deploy.0 = Debug|ARM

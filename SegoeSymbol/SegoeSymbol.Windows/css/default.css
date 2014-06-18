@@ -86,21 +86,43 @@
 	font-size: 20px;
    
 }
-.itemInfo {
-    font-family:Consolas;
-    background-color:#000;
-	color:#fff;
-     padding: 2px 10px 2px 10px;
-     margin-bottom:2px;
-     text-align:right;
-     font-size:20px;
+.infoHolderItemText {
+    font-family:Consolas;    
+	color:#fff;   
+    font-size:18px;
+    text-align:right;
+    padding-right:10px;
 }
 .infoHolder {
+    background-color:#000;
     position:absolute;
-    right:0px;
-    bottom:0px;
+    left:20px;
+    top:70px;
     z-index:-2;
-    padding:10px;
+
+    
+}
+.infoHolder label {
+    right:-40px;
+    top:1px;
+    overflow:hidden;
+width:22px;
+height:20px;
+font-size:10px;
+background-color:#ff0000;
+transform:rotate(90deg);
+position:absolute;
+right:0px;
+overflow:hidden;
+
+}
+
+.infoHolderItem {
+    position:relative;
+width:120px;
+height:25px;
+background-color:black;
+margin-bottom:10px;
 }
 
 

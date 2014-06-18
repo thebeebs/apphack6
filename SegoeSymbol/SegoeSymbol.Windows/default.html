@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title>SegoeSymbol.Windows</title>
-
+    <script>
+        Microsoft.ApplicationInsights.Telemetry.WindowsStore.ClientAnalyticsSession.default.start("bc087ca7-6770-4c17-a2a2-32a3e89f5e7c");
+    </script>
     <!-- WinJS references -->
     <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
     <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
@@ -14,22 +16,30 @@
     <script src="/js/default.js"></script>
 </head>
 <body class="background">
-	<div id="haciendaGrid" data-win-control="WinJS.Binding.Template">
-		<div class="haciendaGrid"><div class="infoHolder">
-    <div class="itemInfo" data-win-bind="textContent:code"></div>
-    <div class="itemInfo" data-win-bind="textContent:html"></div>
-    <div class="itemInfo" data-win-bind="textContent:css"></div>
-</div>	
+    <div id="haciendaGrid" data-win-control="WinJS.Binding.Template">
+        <div class="haciendaGrid">
+            <div class="infoHolder">
+                <div class="infoHolderItem">
+                    <label>HEX</label><div class="infoHolderItemText" data-win-bind="textContent:code"></div>
+                </div>
+                <div class="infoHolderItem">
+                    <label>HTML</label><div class="infoHolderItemText" data-win-bind="textContent:html"></div>
+                </div>
+                <div class="infoHolderItem">
+                    <div class="infoHolderItemText" data-win-bind="textContent:css"></div><label>CSS</label>
+                </div>
+            </div>
+
             <div class="itemSymbol" data-win-bind="innerHTML:symbol"></div>
-            
+
             <div class="tri"></div>
             <br />
-		</div>
-	</div>
+        </div>
+    </div>
     <h1 class="title" style="margin-left: 120px; -ms-grid-column-align: inherit; -ms-grid-row-align: end;">Segoe Symbol</h1>
-	<div class="haciendaBackground" data-win-control="WinJS.UI.AppBar" style="-ms-grid-row: 2;">
-		<button id="copy" class="haciendaButtons" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'copy', id:'copy', label:'Copy Symbol', onclick:test, section:'global', type:'button'}"></button>	
-	</div>
+    <div class="haciendaBackground" data-win-control="WinJS.UI.AppBar" style="-ms-grid-row: 2;">
+        <button id="btnCopy" class="haciendaButtons" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'copy', id:'copy', label:'Copy Symbol', onclick:test, section:'global', type:'button'}"></button>
+    </div>
     <div id="symbolList" class="symbolGrid" data-win-control="WinJS.UI.ListView"
          data-win-options="{
          itemDataSource:Symbol.data.dataSource,
@@ -37,6 +47,6 @@
          itemTemplate:select('#haciendaGrid')}"
          style=" -ms-grid-row: 2;"></div>
 
-    
+
 </body>
 </html>

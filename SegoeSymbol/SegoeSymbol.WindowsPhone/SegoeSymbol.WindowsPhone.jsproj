@@ -43,11 +43,15 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" />
   <PropertyGroup>
     <DefaultLanguage>en-US</DefaultLanguage>
+    <NuGetPackageImportStamp>2f4c6d0c</NuGetPackageImportStamp>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="default.html" />
     <Content Include="images\Square150x150Logo.scale-240.png" />
     <Content Include="images\Square44x44Logo.scale-240.png" />
@@ -59,12 +63,20 @@
     <Content Include="css\ui-themed.css" />
     <Content Include="css\ui-themed.theme-dark.css" />
     <Content Include="css\ui-themed.theme-light.css" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.Phone.WinJS.2.1, Version=1.0" />
   </ItemGroup>
   <Import Project="..\SegoeSymbol.Shared\SegoeSymbol.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
+  <Import Project="..\..\packages\Microsoft.ApplicationInsights.Telemetry.WindowsStore.0.7.2.0\build\Microsoft.ApplicationInsights.Telemetry.WindowsStore.targets" Condition="Exists('..\..\packages\Microsoft.ApplicationInsights.Telemetry.WindowsStore.0.7.2.0\build\Microsoft.ApplicationInsights.Telemetry.WindowsStore.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.ApplicationInsights.Telemetry.WindowsStore.0.7.2.0\build\Microsoft.ApplicationInsights.Telemetry.WindowsStore.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.ApplicationInsights.Telemetry.WindowsStore.0.7.2.0\build\Microsoft.ApplicationInsights.Telemetry.WindowsStore.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below then uncomment
        that target and the DisableFastUpToDateCheck PropertyGroup. 
        Other similar extension points exist, see Microsoft.Common.targets.

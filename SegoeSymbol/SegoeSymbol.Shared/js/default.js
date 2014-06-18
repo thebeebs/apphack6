@@ -21,6 +21,7 @@
     //        { unicode: "E287", html: "&#9822", unicodeJS: "\uE173" }
     //];
 
+
     WinJS.Namespace.define("Symbol", {
         data: new WinJS.Binding.List([])
     })
@@ -30,6 +31,10 @@
 
 
             args.setPromise(WinJS.UI.processAll());
+            btnCopy.winControl.onclick = function () {
+                Windows
+            }
+            
             var url = new Windows.Foundation.Uri("ms-appx:///data/segoeUnicodePrivateArea.json");
             Windows.Storage.StorageFile.getFileFromApplicationUriAsync(url).then(function (file) {
                 Windows.Storage.FileIO.readTextAsync(file).then(function (text) {
