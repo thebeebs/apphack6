@@ -42,8 +42,14 @@
             var appBarControl = document.getElementById('appBar').winControl;
             var listView = document.getElementById("symbolList").winControl;
             listView.onselectionchanged = function (args) {
-                appBarControl.show();
-                appBarControl.sticky = true;
+                
+                if (listView.selection.count() > 0) {
+                    appBarControl.show();
+                    appBarControl.sticky = true;
+                }
+                else {
+                    appBarControl.hide();
+                }
             }
             
             
