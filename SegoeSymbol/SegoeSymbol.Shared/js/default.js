@@ -27,13 +27,25 @@
     })
 
     app.onactivated = function (args) {
+
+        Microsoft.ApplicationInsights.Telemetry.WindowsStore.ClientAnalyticsSession.default.start("bc087ca7-6770-4c17-a2a2-32a3e89f5e7c");
+
         if (args.detail.kind === activation.ActivationKind.launch) {
 
 
             args.setPromise(WinJS.UI.processAll());
-            btnCopy.winControl.onclick = function () {
+            btnCopyHTML.winControl.onclick = function () {
                 Windows
             }
+
+            var appBarDiv = document.getElementById("appBar");
+            var appBarControl = document.getElementById('appBar').winControl;
+            var listView = document.getElementById("symbolList").winControl;
+            listView.onselectionchanged = function (args) {
+                appBarControl.show();
+                appBarControl.sticky = true;
+            }
+            
             
             var url = new Windows.Foundation.Uri("ms-appx:///data/segoeUnicodePrivateArea.json");
             Windows.Storage.StorageFile.getFileFromApplicationUriAsync(url).then(function (file) {

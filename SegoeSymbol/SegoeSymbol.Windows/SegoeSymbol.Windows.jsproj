@@ -50,7 +50,7 @@
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>SegoeSymbol_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <NuGetPackageImportStamp>d07ff7a1</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>ae0e06fa</NuGetPackageImportStamp>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -58,6 +58,7 @@
     </AppxManifest>
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="default.html" />
     <Content Include="images\backdrop.svg" />
