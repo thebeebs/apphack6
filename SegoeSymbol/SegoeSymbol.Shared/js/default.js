@@ -5,7 +5,8 @@
     
     var app = WinJS.Application;
     var activation = Windows.ApplicationModel.Activation;
-
+    var Notifications = Windows.UI.Notifications;
+ 
     //var symbolArray = [
     //        { unicode: "e071", html: "&#9822", unicodeJS: "\ue071" },
     //        { unicode: "E002", html: "&#9822", unicodeJS: "\uE173" },
@@ -26,6 +27,19 @@
         data: new WinJS.Binding.List([])
     })
 
+    function copyToClipBoard(value) {
+        var dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
+        dataPackage.requestedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.copy;
+        dataPackage.setText(value);
+        Windows.ApplicationModel.DataTransfer.Clipboard.setContent(dataPackage)
+        var notificationManager = Notifications.ToastNotificationManager;
+        var doc = new Windows.Data.Xml.Dom.XmlDocument;
+        doc.loadXml("<toast><visual><binding template=\"ToastText01\"><text id=\"1\">"+ value+ "</text></binding></visual></toast>");
+        var toast = new Windows.UI.Notifications.ToastNotification(doc);
+        notificationManager.createToastNotifier().show(toast);
+
+    }
+
     app.onactivated = function (args) {
 
         Microsoft.ApplicationInsights.Telemetry.WindowsStore.ClientAnalyticsSession.default.start("bc087ca7-6770-4c17-a2a2-32a3e89f5e7c");
@@ -35,7 +49,15 @@
 
             args.setPromise(WinJS.UI.processAll());
             btnCopyHTML.winControl.onclick = function () {
-                Windows
+                copyToClipBoard("HTML Copied")
+            }
+
+            btnCopyCSS.winControl.onclick = function () {
+                copyToClipBoard("CSS Copied")
+            }
+
+            btnCopyHEX.winControl.onclick = function () {
+                copyToClipBoard("HEX Copied")
             }
 
             var appBarDiv = document.getElementById("appBar");
