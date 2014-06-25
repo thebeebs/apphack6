@@ -7,37 +7,29 @@
     var activation = Windows.ApplicationModel.Activation;
     var Notifications = Windows.UI.Notifications;
  
-    //var symbolArray = [
-    //        { unicode: "e071", html: "&#9822", unicodeJS: "\ue071" },
-    //        { unicode: "E002", html: "&#9822", unicodeJS: "\uE173" },
-    //        { unicode: "E003", html: "&#9822", unicodeJS: "\uE173" },
-    //        { unicode: "E004", html: "&#9822", unicodeJS: "\uE173" },
-    //        { unicode: "E2A8", html: "&#9822", unicodeJS: "\uE173" },
-    //        { unicode: "E287", html: "&#9822", unicodeJS: "\uE173" },
-    //        { unicode: "E173", html: "&#9822", unicodeJS: "\uE173" },
-    //        { unicode: "E2A8", html: "&#9822", unicodeJS: "\uE173" },
-    //        { unicode: "E287", html: "&#9822", unicodeJS: "\uE173" },
-    //        { unicode: "E173", html: "&#9822", unicodeJS: "\uE173" },
-    //        { unicode: "E2A8", html: "&#9822", unicodeJS: "\uE173" },
-    //        { unicode: "E287", html: "&#9822", unicodeJS: "\uE173" }
-    //];
-
-
     WinJS.Namespace.define("Symbol", {
         data: new WinJS.Binding.List([])
     })
 
-    function copyToClipBoard(value) {
+    function copyToClipBoard(value, type) {
         var dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
         dataPackage.requestedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.copy;
         dataPackage.setText(value);
         Windows.ApplicationModel.DataTransfer.Clipboard.setContent(dataPackage)
         var notificationManager = Notifications.ToastNotificationManager;
         var doc = new Windows.Data.Xml.Dom.XmlDocument;
-        doc.loadXml("<toast><visual><binding template=\"ToastText01\"><text id=\"1\">"+ value+ "</text></binding></visual></toast>");
+        doc.loadXml("<toast><visual><binding template=\"ToastText01\"><text id=\"1\">The "+ type + " value was copied your your clipboard</text></binding></visual></toast>");
         var toast = new Windows.UI.Notifications.ToastNotification(doc);
         notificationManager.createToastNotifier().show(toast);
 
+    }
+
+    function getSelection() {
+        var listView = document.getElementById("symbolList").winControl;
+
+        return listView.selection.getItems().then(function (items) {
+            return items[0].data;
+        }); 
     }
 
     app.onactivated = function (args) {
@@ -46,24 +38,35 @@
 
         if (args.detail.kind === activation.ActivationKind.launch) {
 
-
             args.setPromise(WinJS.UI.processAll());
             btnCopyHTML.winControl.onclick = function () {
-                copyToClipBoard("HTML Copied")
+                getSelection().done(
+                    function (value){
+                        copyToClipBoard(value.html, "HTML")
+                    })
+                
             }
 
             btnCopyCSS.winControl.onclick = function () {
-                copyToClipBoard("CSS Copied")
+                getSelection().done(
+                    function (value) {
+                        copyToClipBoard(value.css, "CSS")
+                    })
+
             }
 
             btnCopyHEX.winControl.onclick = function () {
-                copyToClipBoard("HEX Copied")
+                getSelection().done(
+                    function (value) {
+                        copyToClipBoard(value.code, "HEX")
+                    })
+
             }
 
             var appBarDiv = document.getElementById("appBar");
             var appBarControl = document.getElementById('appBar').winControl;
             var listView = document.getElementById("symbolList").winControl;
-            listView.onselectionchanged = function (args) {
+            listView.onselectionchanged = function (args,ui,oioi) {
                 
                 if (listView.selection.count() > 0) {
                     appBarControl.show();
