@@ -1,4 +1,5 @@
-﻿// For an introduction to the Blank template, see the following documentation:
+﻿/// <reference path="applicationInsightsService.js" />
+// For an introduction to the Blank template, see the following documentation:
 // http://go.microsoft.com/fwlink/?LinkID=392286
 (function () {
     "use strict";
@@ -23,7 +24,7 @@
         notificationManager.createToastNotifier().show(toast);
 
         // Send notification to App Insights that a copy was made.
-
+        ApplicationInsightsService.postClipboardCopy(value, type);
 
     }
 
@@ -38,7 +39,7 @@
     app.onactivated = function (args) {
 
         Microsoft.ApplicationInsights.Telemetry.WindowsStore.ClientAnalyticsSession.default.start("bc087ca7-6770-4c17-a2a2-32a3e89f5e7c");
-
+    
         if (args.detail.kind === activation.ActivationKind.launch) {
 
             args.setPromise(WinJS.UI.processAll());
