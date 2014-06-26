@@ -22,6 +22,9 @@
         var toast = new Windows.UI.Notifications.ToastNotification(doc);
         notificationManager.createToastNotifier().show(toast);
 
+        // Send notification to App Insights that a copy was made.
+
+
     }
 
     function getSelection() {
