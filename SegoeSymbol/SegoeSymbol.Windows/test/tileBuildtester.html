@@ -12,7 +12,8 @@
     <input id="width" value="100" />
     <input id="height" value="100" />
     <input id="symbol" value="533" />
-    <input id="colour" value="#336699" />
+    <input id="background" value="#000000" />
+    <input id="foreground" value="#ffffff" />
     <div id="output"></div>
 
     <script>
@@ -30,24 +31,29 @@
         document.getElementById("generate").onclick = function () {
             tileGenerate(document.getElementById("symbol").value);
         }
+        document.getElementById("clear").onclick = function () {
+            output.innerHTML = "";
+        }
 
         function tileGenerate(s) {
             var w = parseInt(document.getElementById("width").value);
             var h = parseInt(document.getElementById("height").value);
-            var c = document.getElementById("colour").value;
-            var canvas = generateCanvasTile(w, h, s, c);
+            var b = document.getElementById("background").value;
+            var f = document.getElementById("foreground").value;         
+                      
+            canvas = UtilCanvas.generateCanvasTileOffsetBug(w, h, s, b, f);
             output.appendChild(canvas);
-
-            document.getElementById("clear").onclick = function () {
-                output.innerHTML = "";
-            }
         }
+
 
         var myParam = getQueryString()["value"];
         if (myParam != "") {
             document.getElementById("symbol").value = myParam;
             tileGenerate(myParam);
         }
+
+        
+
 
     </script>
 

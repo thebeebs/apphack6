@@ -1,0 +1,6 @@
+﻿var ApplicationInsightsService = {
+
+    postClipboardCopy: function () {
+
+    }
+}

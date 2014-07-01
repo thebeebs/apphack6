@@ -98,9 +98,9 @@
                     return file.openAsync(Windows.Storage.FileAccessMode.readWrite);
                 })
                 .done(function (stream) {
-                    var canvas = generateCanvasTile(width, height, value, colour);
-                    var blob = canvas.msToBlob();
-                    imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    var canvas = UtilCanvas.generateCanvasTileOffsetBug(width, height, value, colour, '#fff');
+                    var ctx = canvas.getContext("2d");
+                    var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
                     Windows.Graphics.Imaging.BitmapEncoder.createAsync(Windows.Graphics.Imaging.BitmapEncoder.pngEncoderId, stream)
                         .done(function (encoder) {
                             //Set the pixel data in the encoder
@@ -153,7 +153,7 @@ app.onactivated = function (args) {
                 })
                 
         }
-
+        btnPreview.style.display = "none";
         btnPreview.winControl.onclick = function () {
             getSelection().done(
                 function (value) {
