@@ -59,26 +59,16 @@
         createTiles(value, "phone", sizes, tiles);
     }
 
-    function xcreateWindowsTiles(value) {
-        var tiles = [
-                { w: 44, h: 44, n: 'Tiny' }
-
-        ]
-        var sizes = [100];
-        createTiles(value, "phone", sizes, tiles);
-    }
-
     function createTiles(value, type, sizes, tiles) {
         
         var folderPicker = new Windows.Storage.Pickers.FolderPicker;
         folderPicker.suggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.desktop;
         folderPicker.fileTypeFilter.replaceAll([".png"]);
-        folderPicker.commitButtonText = "Save Tiles here";        
+        folderPicker.commitButtonText = "Export here";        
 
         folderPicker.pickSingleFolderAsync()
         .done(function (folder) {
             Windows.Storage.AccessCache.StorageApplicationPermissions.futureAccessList.addOrReplace("PickedFolderToken", folder);
-
             for (var i = 0; i < tiles.length; i++) {
                 produceTile(tiles[i].n, folder, tiles[i].w, tiles[i].h, "#000000", value, sizes);
             }
