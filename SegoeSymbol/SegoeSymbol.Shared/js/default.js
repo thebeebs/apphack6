@@ -84,7 +84,7 @@
             }
         })
     }
-
+   
     function produceTile(name, folder, width, height, colour, value, sizes) {        
         var newname;
         for (var i = 0; i < sizes.length; i++) {
@@ -98,25 +98,7 @@
                     return file.openAsync(Windows.Storage.FileAccessMode.readWrite);
                 })
                 .done(function (stream) {
-                    var canvas = document.createElement("canvas");
-                    var ctx = canvas.getContext("2d");
-                    var ctx, imgData;
-                    canvas.width = width;
-                    canvas.height = height;
-
-                    var x = ctx.canvas.width / 2 | 0;
-                    var y = ctx.canvas.height * 0.66 | 0
-                    ctx.font = x + "px 'Segoe UI Symbol'";
-
-                    var font = x > y ? y : x;
-
-                    ctx.font = font + "px Segoe UI Symbol";
-                    ctx.fillStyle = colour;
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    ctx.fillStyle = "white";
-                    ctx.textAlign = "center";
-                    ctx.fillText(String.fromCharCode(value), x, y);
-
+                    var canvas = generateCanvasTile(width, height, value, colour);
                     var blob = canvas.msToBlob();
                     imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
                     Windows.Graphics.Imaging.BitmapEncoder.createAsync(Windows.Graphics.Imaging.BitmapEncoder.pngEncoderId, stream)

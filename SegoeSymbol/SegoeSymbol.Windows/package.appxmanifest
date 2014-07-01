@@ -14,7 +14,7 @@
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" StartPage="default.html">
+    <Application Id="App" StartPage="test/tileBuildTester.html">
       <m2:VisualElements DisplayName="Segoe Symbol" Description="Segoe Symbol makes it easy to generate Windows Phone and Windows 8 tiles for your apps using the Segoe Symbol UI font." ForegroundText="light" BackgroundColor="#000000" Square150x150Logo="images\Logo.png" Square30x30Logo="images\SmallLogo.png" ToastCapable="true">
         <m2:SplashScreen Image="images\splashscreen.png" />
       </m2:VisualElements>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="js/tileBuilder.js"></script>
+    <script src="../js/UtilCanvas.js"></script>
+</head>
+<body>
+    <button id="generate">Generate</button>
+    <button id="clear">Clear</button>
+    <input id="width" value="100" />
+<input id="height" value="100" />
+<input id="symbol" value="533" />
+<input id="colour" value="#336699" />
+    <div id="output"></div>
+    
+    <script>
+            document.getElementById("generate").onclick = function () {
+                var w = parseInt(document.getElementById("width").value);
+                var h = parseInt(document.getElementById("height").value);
+                var s = document.getElementById("symbol").value;
+                var c = document.getElementById("colour").value;
+                var canvas = generateCanvasTile(w, h, s, c);
+                output.appendChild(canvas);
+
+                document.getElementById("clear").onclick = function () {
+                    output.innerHTML = "";
+                }
+    }
+
+</script>
+
+
+</body>
+</html>

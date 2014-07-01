@@ -70,7 +70,10 @@
     <Content Include="css\default.css" />
     <Content Include="images\storelogo.scale-100.png" />
     <Content Include="js\applicationInsightsService.js" />
+    <Content Include="js\tileBuilder.js" />
+    <Content Include="js\UtilCanvas.js" />
     <Content Include="packages.config" />
+    <Content Include="test\tileBuildTester.html" />
     <None Include="SegoeSymbol_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
