@@ -154,8 +154,13 @@ app.onactivated = function (args) {
                 
         }
 
-        
+        btnPreview.winControl.onclick = function () {
+            getSelection().done(
+                function (value) {
+                    window.location = "test/tileBuildTester.html?value=" + value.code;
+                })
 
+        }
         btnCopy.winControl.onclick = function () {
             getSelection().done(
                 function (value) {
