@@ -14,6 +14,7 @@
     <!-- SegoeSymbol.Windows references -->
     <link href="/css/default.css" rel="stylesheet" />
     <script src="/js/default.js"></script>
+	<script type="text/javascript">WinJS.UI.processAll();</script>
 </head>
 <body class="background">
     <div id="haciendaGrid" data-win-control="WinJS.Binding.Template">
@@ -34,11 +35,9 @@
         </div>
     </div>
     <h1 class="title" style="margin-left: 120px; -ms-grid-column-align: inherit; -ms-grid-row-align: end;">Segoe Symbol</h1>
-    <div id="appBar" class="haciendaBackground" data-win-control="WinJS.UI.AppBar" style="-ms-grid-row: 2;">
-        <button id="btnCreateTiles" class="haciendaButtons" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'copy', id:'copy', label:'Create Windows 8 Tiles', onclick:test, section:'global', type:'button'}"></button>
-        <button id="btnCopyHEX" class="haciendaButtons" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'copy', id:'copy', label:'Copy Hex', onclick:test, section:'global', type:'button'}"></button>
-        <button id="btnCopyHTML" class="haciendaButtons" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'copy', id:'copy', label:'Copy HTML', onclick:test, section:'global', type:'button'}"></button>
-        <button id="btnCopyCSS" class="haciendaButtons" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'copy', id:'copy', label:'Copy CSS', onclick:test, section:'global', type:'button'}"></button>
+    <div id="confirmFlyout" data-win-control="WinJS.UI.Flyout" aria-label="{Confirm purchase flyout}">
+        <div>You are about to create tile for a windows 8 application. Any Existing tiles will be delted. Please enter a colour and then click to create</div>
+        <button id="btnConfirm">Create</button>
     </div>
     <div id="symbolList" class="symbolGrid" data-win-control="WinJS.UI.ListView"
          data-win-options="{
@@ -47,7 +46,16 @@
          tapBehavior: 'directSelect',
          itemTemplate:select('#haciendaGrid')}"
          style=" -ms-grid-row: 2;"></div>
+<div id="appBar" class="haciendaBackground" data-win-control="WinJS.UI.AppBar" style="-ms-grid-row: 2;">
 
+		<button id="btnCreateTiles" class="haciendaButtons" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'copy', id:'copy', label:'Create Windows 8 Tiles', onclick:test, section:'global', type:'flyout'}"></button>
+    <button id="btnCopy" class="haciendaButtons" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'copy', id:'copy', label:'Copy', onclick:test, section:'global', type:'button'}"></button>
+    
+    <button id="btnCopyHEX" class="haciendaButtons" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'copy', id:'copy', label:'Copy Hex', onclick:test, section:'global', type:'button'}"></button>
+        <button id="btnCopyHTML" class="haciendaButtons" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'copy', id:'copy', label:'Copy HTML', onclick:test, section:'global', type:'button'}"></button>
+        <button id="btnCopyCSS" class="haciendaButtons" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon:'copy', id:'copy', label:'Copy CSS', onclick:test, section:'global', type:'button'}"></button>
+    
+</div>
    
 </body>
 </html>

@@ -19,65 +19,120 @@
         Windows.ApplicationModel.DataTransfer.Clipboard.setContent(dataPackage)
         var notificationManager = Notifications.ToastNotificationManager;
         var doc = new Windows.Data.Xml.Dom.XmlDocument;
-        doc.loadXml("<toast><visual><binding template=\"ToastText01\"><text id=\"1\">The "+ type + " value was copied your your clipboard</text></binding></visual></toast>");
-        var toast = new Windows.UI.Notifications.ToastNotification(doc);
+        if (type == "COPY") {
+            doc.loadXml("<toast><visual><binding template=\"ToastText01\"><text id=\"1\">The Symbol was copied to your clipboard, when you paste you'll need to set the font to Segoe UI Symbol in the target document</text></binding></visual></toast>");
+        } else {
+            doc.loadXml("<toast><visual><binding template=\"ToastText01\"><text id=\"1\">The "+ type + " value was copied your your clipboard</text></binding></visual></toast>");
+        }var toast = new Windows.UI.Notifications.ToastNotification(doc);
         notificationManager.createToastNotifier().show(toast);
 
         // Send notification to App Insights that a copy was made.
         ApplicationInsightsService.postClipboardCopy(value, type);
 
     }
+    function createWindowsTiles(value) {
+        var tiles = [
+            { w: 30, h: 30, n: 'SmallLogo'},
+            { w: 70, h: 70, n: 'Square'},
+            { w: 150, h: 150, n: 'Logo'},
+            { w: 310, h: 150, n: 'Wide'},
+            { w: 310, h: 310, n: 'Square'},
+            { w: 50, h: 50, n: 'Store'},
+            { w: 24, h: 24, n: 'Badge'},
+            { w: 620, h: 300, n: 'SplashScreen'}
+        ]
 
-    function createTiles(value) {
-        var canvas = document.createElement("canvas");
-        var ctx = canvas.getContext("2d");
-        var ctx, imgData;
-        canvas.width = 200;
-        canvas.height = 200;
+        var sizes = [80, 100, 140, 160, 180];
+        createTiles(value, "windows", sizes, tiles);
+    }
 
-        ctx.font = "italic 36px/2 Unknown Font, sans-serif";
-        ctx.fillStyle = "blue";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "white";
-        ctx.fillText(value, canvas.width / 2, canvas.height * .8);
-        var blob = canvas.msToBlob();
-        // Verify that we are currently not snapped, or that we can unsnap to open the picker
-        var currentState = Windows.UI.ViewManagement.ApplicationView.value;
-        if (currentState === Windows.UI.ViewManagement.ApplicationViewState.snapped &&
-            !Windows.UI.ViewManagement.ApplicationView.tryUnsnap()) {
-            // Fail silently if we can't unsnap
-            return;
-        }
+    function createWindowsPhoneTiles(value) {
+        var tiles = [
+                { w: 44, h: 44, n: 'Tiny'},
+                { w: 71, h: 71, n: 'Small'},
+                { w: 71, h: 71, n: 'Medium'},
+                { w: 50, h: 50, n: 'Store'},
+                { w: 24, h: 24, n: 'Badge'},
+                { w: 768, h: 1280, n: 'SplashScreen'}
+        ]
+        var sizes = [100, 140, 160, 180, 200, 220, 240, 300, 400];
+        createTiles(value, "phone", sizes, tiles);
+    }
+
+    function xcreateWindowsTiles(value) {
+        var tiles = [
+                { w: 44, h: 44, n: 'Tiny' }
+
+        ]
+        var sizes = [100];
+        createTiles(value, "phone", sizes, tiles);
+    }
+
+    function createTiles(value, type, sizes, tiles) {
         
         var folderPicker = new Windows.Storage.Pickers.FolderPicker;
         folderPicker.suggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.desktop;
         folderPicker.fileTypeFilter.replaceAll([".png"]);
-        folderPicker.commitButtonText = "Save Tiles here";
-      
-        folderPicker.pickSingleFolderAsync()
-            .then(function (folder) {
-                Windows.Storage.AccessCache.StorageApplicationPermissions.futureAccessList.addOrReplace("PickedFolderToken", folder);
-                return folder.createFileAsync("TILE200x200.png")
-            })
-            .then(function (file) {
-                return file.openAsync(Windows.Storage.FileAccessMode.readWrite);
-            })
-            .then(function (stream) {                
-                imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);            
-                return Windows.Graphics.Imaging.BitmapEncoder.createAsync(Windows.Graphics.Imaging.BitmapEncoder.pngEncoderId, stream);
-            })
-            .then(function (encoder) {
-                //Set the pixel data in the encoder
-                encoder.setPixelData(Windows.Graphics.Imaging.BitmapPixelFormat.rgba8, Windows.Graphics.Imaging.BitmapAlphaMode.straight,
-                    canvas.width, canvas.height, 96, 96, new Uint8Array(imgData.data));
-                //Go do the encoding
-                
-                return encoder.flushAsync();
-            })
-            .done(function (returnfs) {
+        folderPicker.commitButtonText = "Save Tiles here";        
 
-            }, function (error) { })
-}
+        folderPicker.pickSingleFolderAsync()
+        .done(function (folder) {
+            Windows.Storage.AccessCache.StorageApplicationPermissions.futureAccessList.addOrReplace("PickedFolderToken", folder);
+
+            for (var i = 0; i < tiles.length; i++) {
+                produceTile(tiles[i].n, folder, tiles[i].w, tiles[i].h, "#000000", value, sizes);
+            }
+        })
+    }
+
+    function produceTile(name, folder, width, height, colour, value, sizes) {        
+        var newname;
+        for (var i = 0; i < sizes.length; i++) {
+
+            width = ((width / 100) * sizes[i]) | 0;
+            height = ((height / 100) * sizes[i]) | 0;
+            newname = name + width + "x" + height +".scale-" + sizes[i] + ".png"
+            
+            folder.createFileAsync(newname, Windows.Storage.CreationCollisionOption.replaceExisting)
+                .then(function (file) {
+                    return file.openAsync(Windows.Storage.FileAccessMode.readWrite);
+                })
+                .done(function (stream) {
+                    var canvas = document.createElement("canvas");
+                    var ctx = canvas.getContext("2d");
+                    var ctx, imgData;
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    var x = ctx.canvas.width / 2 | 0;
+                    var y = ctx.canvas.height * 0.66 | 0
+                    ctx.font = x + "px 'Segoe UI Symbol'";
+
+                    var font = x > y ? y : x;
+
+                    ctx.font = font + "px Segoe UI Symbol";
+                    ctx.fillStyle = colour;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = "white";
+                    ctx.textAlign = "center";
+                    ctx.fillText(String.fromCharCode(value), x, y);
+
+                    var blob = canvas.msToBlob();
+                    imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    Windows.Graphics.Imaging.BitmapEncoder.createAsync(Windows.Graphics.Imaging.BitmapEncoder.pngEncoderId, stream)
+                        .done(function (encoder) {
+                            //Set the pixel data in the encoder
+                            encoder.setPixelData(Windows.Graphics.Imaging.BitmapPixelFormat.rgba8, Windows.Graphics.Imaging.BitmapAlphaMode.straight,
+                                width, height, 96, 96, new Uint8Array(imgData.data));
+                            //Go do the encoding
+                            encoder.flushAsync().done(function () {
+                                stream.close()
+                            });
+                        }
+                        )
+                })
+        }
+    }
 
 function getSelection() {
     var listView = document.getElementById("symbolList").winControl;
@@ -96,12 +151,18 @@ app.onactivated = function (args) {
         args.setPromise(WinJS.UI.processAll());
 
         btnCreateTiles.winControl.onclick = function () {
+            confirmFlyout.winControl.show(btnCreateTiles, "top");
+        }
+
+
+        var confirmFunc = function () {
             getSelection().done(
                 function (value) {
-                    createTiles(value.code);
+                    createWindowsTiles(value.code);
                 })
-
         }
+
+        document.getElementById("btnConfirm").addEventListener("click", confirmFunc, false);
 
         btnCopyHTML.winControl.onclick = function () {
             getSelection().done(
@@ -109,6 +170,16 @@ app.onactivated = function (args) {
                     copyToClipBoard(value.html, "HTML")
                 })
                 
+        }
+
+        
+
+        btnCopy.winControl.onclick = function () {
+            getSelection().done(
+                function (value) {
+                    copyToClipBoard(String.fromCharCode(value.code), "COPY")
+                })
+
         }
 
         btnCopyCSS.winControl.onclick = function () {
@@ -154,7 +225,7 @@ app.onactivated = function (args) {
                     var code = symbolArray[i].code
                     code = "&#" + parseInt(code.substring(2, code.length),16) + ";";
                     symbolArray[i].symbol = code;
-                    symbolArray[i].html = "&#" + parseInt(code.substring(2, code.length),16) ;
+                    symbolArray[i].html = "&#" + parseInt(code.substring(2, code.length), 16);
                     Symbol.data.push(symbolArray[i]);
                 }
             });

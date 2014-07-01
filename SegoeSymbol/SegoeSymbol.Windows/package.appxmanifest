@@ -2,7 +2,7 @@
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:build="http://schemas.microsoft.com/developer/appx/2012/build" IgnorableNamespaces="build">
   <Identity Name="78d05560-d94d-4acd-a38e-225dfb315bad" Version="1.0.0.0" Publisher="CN=mabeeby" />
   <Properties>
-    <DisplayName>SegoeSymbol.Windows</DisplayName>
+    <DisplayName>SegoeSymbol</DisplayName>
     <PublisherDisplayName>mabeeby</PublisherDisplayName>
     <Logo>images\storelogo.png</Logo>
   </Properties>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-      <m2:VisualElements DisplayName="SegoeSymbol.Windows" Description="SegoeSymbol.Windows" ForegroundText="light" BackgroundColor="#000000" Square150x150Logo="images\Logo.png" Square30x30Logo="images\SmallLogo.png" ToastCapable="true">
+      <m2:VisualElements DisplayName="Segoe Symbol" Description="Segoe Symbol makes it easy to generate Windows Phone and Windows 8 tiles for your apps using the Segoe Symbol UI font." ForegroundText="light" BackgroundColor="#000000" Square150x150Logo="images\Logo.png" Square30x30Logo="images\SmallLogo.png" ToastCapable="true">
         <m2:SplashScreen Image="images\splashscreen.png" />
       </m2:VisualElements>
     </Application>
@@ -24,6 +24,6 @@
     <Capability Name="internetClient" />
   </Capabilities>
   <build:Metadata>
-    <build:Item Name="Blend" Version="12.0.50320.0" />
+    <build:Item Name="Blend" Version="12.0.50429.0" />
   </build:Metadata>
 </Package>

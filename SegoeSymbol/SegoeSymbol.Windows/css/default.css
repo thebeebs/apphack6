@@ -121,9 +121,6 @@ background-color:black;
 margin-bottom:10px;
 }
 
-
-
-
 .haciendaBackground {
 	background-size: 50px 50px;
 	background-color:#F8C300;
@@ -131,14 +128,6 @@ margin-bottom:10px;
                         transparent 50%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 75%,
                         transparent 75%, transparent);
 
-}
-
-button, input[type=button], input[type=submit],
-input[type=reset], input[type=file]::-ms-browse {
-    background-color: rgb(0,0,0)!important;
-    border-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-	margin:10px !important;
 }
 
 .flex-container {
