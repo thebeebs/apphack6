@@ -209,3 +209,11 @@ label.flex-item {
     flex: 0 1 auto;
     align-self: auto;
     }
+
+#appBar button, #appBar input[type=button], #appBar input[type=submit],
+input[type=reset], input[type=file]::-ms-browse {
+    background-color: rgb(0,0,0)!important;
+    border-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+	margin:10px !important;
+}
