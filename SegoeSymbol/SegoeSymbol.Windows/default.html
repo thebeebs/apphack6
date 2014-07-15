@@ -19,22 +19,23 @@
 </head>
 <body class="background">
     <div id="haciendaGrid" data-win-control="WinJS.Binding.Template">
-        <div class="haciendaGrid">
-            <div class="flex-container">
-                <label class="flex-item">HEX</label>
-                <span class="flex-item" data-win-bind="textContent:code"></span>
-                <br><label class="flex-item">HTML</label>
-                <span class="flex-item" data-win-bind="textContent:html"></span>
-                <label class="flex-item">CSS</label>
-                <span class="flex-item" data-win-bind="textContent:css"></span>
+            <div class="haciendaGrid">
+                <div class="flex-container ">
+                    <label class="flex-item">HEX</label>
+                    <span class="flex-item" data-win-bind="textContent:code"></span>
+                    <br><label class="flex-item">HTML</label>
+                    <span class="flex-item" data-win-bind="textContent:html"></span>
+                    <label class="flex-item">CSS</label>
+                    <span class="flex-item" data-win-bind="textContent:css"></span>
+                </div>
+
+                <div class="itemSymbol" data-win-bind="innerHTML:symbol"></div>
+
+                <div class="tri"></div>
+                <br />
             </div>
-
-            <div class="itemSymbol" data-win-bind="innerHTML:symbol"></div>
-
-            <div class="tri"></div>
-            <br />
         </div>
-    </div>
+
     <h1 class="title" style="margin-left: 120px; -ms-grid-column-align: inherit; -ms-grid-row-align: end;">Segoe Symbol</h1>
     <div id="confirmFlyout" data-win-control="WinJS.UI.Flyout" aria-label="{Confirm purchase flyout}">
         <div>You are about to create tile for a windows 8 application. Any Existing tiles will be delted. Please enter a colour and then click to create</div>

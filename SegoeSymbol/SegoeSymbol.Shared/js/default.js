@@ -28,6 +28,7 @@
         ApplicationInsightsService.postClipboardCopy(value, type);
 
     }
+
     function createWindowsTiles(value) {
         var tiles = [
             { w: 30, h: 30, n: 'SmallLogo'},
